@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  lib-yii2-project.server:
+    image: nginx:alpine
+    container_name: lib-yii2-project.server
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ./.dev/nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8020:80"
+    environment:
+      - VIRTUAL_HOST=lib-yii2-project.local
+    networks:
+      - default
+      - reverse-proxy
+
+  lib-yii2-project.fpm:
+    build:
+      context: .dev
+      dockerfile: php82-fpm/Dockerfile
+    image: yii2-php82-fpm
+    container_name: lib-yii2-project.fpm
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ~/.ssh/:/root/.ssh/
+      - ./.dev/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./.dev/php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - default
+      - mysql
+
+networks:
+  default:
+    name: lib-yii2-project
+  mysql:
+    external: true
+  reverse-proxy:
+    external: true
+  
