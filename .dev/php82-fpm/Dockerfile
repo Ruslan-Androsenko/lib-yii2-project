@@ -4,21 +4,20 @@ RUN apk --no-cache update \
     && apk --no-cache upgrade \
     && apk add --update linux-headers \
     && apk add --no-cache $PHPIZE_DEPS \
+    icu-dev \
     libc-dev \
     libzip-dev \
+    freetype-dev \
+    libjpeg-turbo-dev \
     libpng-dev \
     imagemagick-dev \
     libmcrypt-dev \
+    postgresql-dev \
     gcc make autoconf git vim
 
-RUN docker-php-ext-configure zip \
-  && docker-php-ext-install -j "$(nproc)" zip \
-  && docker-php-ext-configure gd \
-  && docker-php-ext-install -j "$(nproc)" gd \
-  && docker-php-ext-configure pdo_mysql \
-  && docker-php-ext-install -j "$(nproc)" pdo_mysql \
-  && pecl install mcrypt xdebug imagick \
-  && docker-php-ext-enable mcrypt xdebug imagick
+RUN docker-php-ext-install gd pdo pdo_pgsql pdo_mysql intl zip \
+  && pecl install mcrypt xdebug imagick memcache \
+  && docker-php-ext-enable mcrypt xdebug imagick memcache
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
