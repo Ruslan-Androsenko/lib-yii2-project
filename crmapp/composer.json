@@ -2,6 +2,7 @@
     "require": {
         "codeception/codeception": "*",
         "codeception/module-phpbrowser": "*",
-        "codeception/module-asserts": "*"
+        "codeception/module-asserts": "*",
+        "fzaninotto/faker": "*"
     }
 }

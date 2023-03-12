@@ -20,4 +20,7 @@ cept run
 
 # Генерация скрипта для приемочного теста
 cept generate:cest Acceptance SmokeTest
+
+# Генерация наследника AcceptanceTester по паттерну "Объект шага"
+cept generate:stepobject Acceptance CRMOperatorSteps
 ```
