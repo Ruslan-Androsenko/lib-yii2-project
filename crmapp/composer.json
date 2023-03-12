@@ -1,0 +1,7 @@
+{
+    "require": {
+        "codeception/codeception": "*",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
+    }
+}
