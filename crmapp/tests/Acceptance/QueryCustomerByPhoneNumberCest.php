@@ -9,29 +9,24 @@ class QueryCustomerByPhoneNumberCest
 {
     private static array $customers = [];
 
-    public function _before(CRMOperatorSteps $I)
-    {
-        $firstCustomer = $I->imagineCustomer();
-        $secondCustomer = $I->imagineCustomer();
-
-        self::$customers = [$firstCustomer, $secondCustomer];
-    }
-
     public function createCustomers(CRMOperatorSteps $I)
     {
         $I->wantTo( 'add two different customers to database') ;
-        $firstCustomer = self::$customers[0] ?? [];
-        $secondCustomer = self::$customers[1] ?? [];
 
         $I->amInAddCustomerUi();
+        $firstCustomer = $I->imagineCustomer();
         $I->fillCustomerDataForm($firstCustomer);
         $I->submitCustomerDataForm();
         $I->seeIAmInListCustomersUi();
 
         $I->amInAddCustomerUi();
+        $secondCustomer = $I->imagineCustomer();
         $I->fillCustomerDataForm($secondCustomer);
         $I->submitCustomerDataForm();
         $I->seeIAmInListCustomersUi();
+
+        // Будет работать только если тесты выполняются всегда в этом порядке
+        self::$customers = [$firstCustomer, $secondCustomer];
     }
 
     public function searchCustomer(CRMUserSteps $I)

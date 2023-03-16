@@ -20,10 +20,10 @@ class CRMOperatorSteps extends AcceptanceTester
         $faker = Factory::create();
 
         return [
-            'CustomerRecord[name]' => $faker->name,
+            'CustomerRecord[name]' => $faker->name(),
             'CustomerRecord[birth_date]' => $faker->date('Y-m-d'),
-            'CustomerRecord[notes]' => $faker->realText(10),
-            'PhoneRecord[number]' => $faker->phoneNumber,
+            'CustomerRecord[notes]' => $faker->sentence(8),
+            'PhoneRecord[number]' => $faker->phoneNumber(),
         ];
     }
 
