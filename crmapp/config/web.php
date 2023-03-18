@@ -6,6 +6,12 @@ return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
     ],
+    'modules' => [
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'allowedIPs' => ['*'],
+        ],
+    ],
     'components' => [
         'request' => [
             'cookieValidationKey' => 'GghghhgGHjdsgTYTyt768GFChdkfdldf',
@@ -16,4 +22,5 @@ return [
             'showScriptName' => false,
         ],
     ],
+    'extensions' => require __DIR__ . '/../vendor/yiisoft/extensions.php',
 ];
