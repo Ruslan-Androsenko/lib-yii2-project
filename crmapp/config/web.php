@@ -23,6 +23,13 @@ return [
                 ],
             ],
         ],
+        'view' => [
+            'renderers' => [
+                'md' => [
+                    'class' => 'app\utilities\MarkdownRenderer',
+                ],
+            ],
+        ],
         'db' => require __DIR__ . '/db.php',
         'urlManager' => [
             'enablePrettyUrl' => true,

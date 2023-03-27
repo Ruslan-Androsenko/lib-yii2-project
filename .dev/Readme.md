@@ -15,8 +15,11 @@ cept bootstrap
 # Пересборка среды Codeception после изменения конфигов
 cept build
 
-# Запуск тестов
+# Запуск всех тестов
 cept run
+
+# Запуск конкретного теста
+cept run tests/Acceptance/DocumentationCest.php
 
 # Генерация скрипта для приемочного теста
 cept generate:cest Acceptance SmokeTest

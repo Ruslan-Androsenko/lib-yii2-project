@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Support\Step\Acceptance;
 
 use Tests\Support\AcceptanceTester;
+use Tests\Support\Helper\AcceptanceHelper;
 
 class CRMUserSteps extends AcceptanceTester
 {
@@ -42,5 +43,14 @@ class CRMUserSteps extends AcceptanceTester
     {
         $I = $this;
         $I->dontSee($customerData['CustomerRecord[name]'], '#search_results');
+    }
+
+    public function seeLargeBodyOfText()
+    {
+        $I = $this;
+        $text = $I->grabTextFrom('p');
+        $helper = new AcceptanceHelper();
+        $helper->seeContentIsLong($text);
+
     }
 }
