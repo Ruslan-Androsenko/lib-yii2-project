@@ -3,12 +3,10 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
-use yii\bootstrap\BootstrapAsset;
+use app\assets\ApplicationUiAssetBundle;
 use yii\helpers\Html;
-use yii\web\YiiAsset;
 
-BootstrapAsset::register($this);
-YiiAsset::register($this);
+ApplicationUiAssetBundle::register($this);
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
