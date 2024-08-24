@@ -13,7 +13,7 @@ RUN apk --no-cache update \
     imagemagick-dev \
     libmcrypt-dev \
     postgresql-dev \
-    gcc make autoconf git vim
+    gcc make autoconf git vim npm bash
 
 RUN docker-php-ext-install gd pdo pdo_pgsql pdo_mysql intl zip \
   && pecl install mcrypt xdebug imagick memcache \

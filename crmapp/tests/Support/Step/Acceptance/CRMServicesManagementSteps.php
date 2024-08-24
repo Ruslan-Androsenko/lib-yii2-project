@@ -6,6 +6,8 @@ namespace Tests\Support\Step\Acceptance;
 
 use Faker\Factory;
 use Tests\Support\AcceptanceTester;
+use Tests\Support\Helper\AcceptanceHelper;
+use Tests\Support\Helper\WebAcceptanceHelper;
 
 class CRMServicesManagementSteps extends AcceptanceTester
 {
@@ -61,6 +63,8 @@ class CRMServicesManagementSteps extends AcceptanceTester
     public function seeConfirmDialogUi()
     {
         $I = $this;
+        $helper = new WebAcceptanceHelper();
+
         $I->click('OK');
 
     }
